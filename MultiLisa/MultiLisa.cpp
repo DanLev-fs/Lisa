@@ -35,11 +35,14 @@ int main()
 		cout << array[i] << " ";							//
 	cout << endl;											//
 
-	cout << "Введите число k <= размеру массива: ";	//
-	cin >> array[1];								// Вводим число k
-	array[1] += 5;									//
-	if (array[1] > arraySize)						// Проверяем k > размера массива
-		array[1] = arraySize;						//
+	cout << "Введите число k <= размеру массива: ";		//
+	cin >> array[1];									// Вводим число k
+	array[1] += 5;										//
+	while (array[1] > arraySize) {						//
+		cout << "Ошибка ввода" << endl;					//
+		cout << "Введите число k <= размеру массива: ";	//
+		cin >> array[1];								// Вводим число k
+	}
 
 	cout << "Введите максимальное число A: ";	//
 	cin >> array[2];							// Вводим число A
@@ -96,19 +99,35 @@ DWORD WINAPI work(LPVOID array) {
 	for (int i = 0; i < arrayL[0] - 5; i++)	// Копируем данные во временный массив 
 		tmp[i] = arrayL[i + 5];				//
 
-	for (int i = 0; i < arrayL[0]-5; i++) {				//
-		int num = tmp[i];								//
-		if (num < arrayL[2]) {							// Ищем элементы меньше A
-			arrayL[offset] = num;						// Записываем в лево
-			offset++;									//
-		}												//
-		else {											//
-			reverseArrayNum--;							// Записываем в право
-			arrayL[reverseArrayNum] = num;				//
-		}												//
-		ReleaseSemaphore((HANDLE)arrayL[3], 1, NULL);	// Сообщаем о завершении итерации
-		Sleep(sleepTime);								// Спим указанное время
-	}													//
+	for (int i = 0; i < arrayL[0]-5; i++) {					//
+		int num = tmp[i];									//
+		if (num < arrayL[2]) {								// Ищем элементы меньше A
+			arrayL[offset] = num;							// Записываем в лево
+			offset++;										//
+			ReleaseSemaphore((HANDLE)arrayL[3], 1, NULL);	// Сообщаем о завершении итерации
+			Sleep(sleepTime);								// Спим указанное время
+		}													//
+	}														//
+
+	for (int i = 0; i < arrayL[0] - 5; i++) {				//
+		int num = tmp[i];									//
+		if (num == arrayL[2]) {								// Проверяем элементы равные A
+			arrayL[offset] = num;							// Записываем
+			offset++;										//
+			ReleaseSemaphore((HANDLE)arrayL[3], 1, NULL);	// Сообщаем о завершении итерации
+			Sleep(sleepTime);								// Спим указанное время
+		}													//
+	}														//
+
+	for (int i = 0; i < arrayL[0] - 5; i++) {				//
+		int num = tmp[i];									//
+		if (num > arrayL[2]) {								// Ищем элементы больше A
+			arrayL[offset] = num;							// Записываем в право
+			offset++;										//
+			ReleaseSemaphore((HANDLE)arrayL[3], 1, NULL);	// Сообщаем о завершении итерации
+			Sleep(sleepTime);								// Спим указанное время
+		}													//
+	}														//
 
 	return 0;
 }
