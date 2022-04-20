@@ -73,16 +73,19 @@ int main()
 	}														//
 	cout << endl;											//
 
+	ReleaseSemaphore((HANDLE)array[4], 1, NULL);	// Запускаем поток MultiElement
+
 	cout << "Массив после изменения: ";	//
 	for (int i = 5; i < arraySize; i++)	// Выводм иготовый массив
 		cout << array[i] << " ";		//
+	cout << endl;
 
 	WaitForSingleObject(hWork, INFINITE);			// Ждём завершения потоков
 	WaitForSingleObject(hMultiElement, INFINITE);	//
 	CloseHandle(hWork);								//
 	CloseHandle(hMultiElement);						// Удаляем дескрипторы
 
-	cout << endl;
+	
 	system("pause");
 }
 
@@ -142,6 +145,7 @@ DWORD WINAPI MultiElement(LPVOID array) {
 	for (int i = 5; i <= k; i++)	// Произведение
 		res *= arrayL[i];			//
 
-	cout << "Итоговое произведение: " << res << endl; // Выводм итоговое произведение
+	WaitForSingleObject((HANDLE)arrayL[4], INFINITE);	// Ждём сигнал
+	cout << "Итоговое произведение: " << res << endl;	// Выводм итоговое произведение
 	return 0;
 }
