@@ -35,13 +35,13 @@ int main()
 		cout << array[i] << " ";							//
 	cout << endl;											//
 
-	cout << "Введите число k <= размеру массива: ";		//
-	cin >> array[1];									// Вводим число k
-	array[1] += 5;										//
-	while (array[1] > arraySize) {						//
-		cout << "Ошибка ввода" << endl;					//
-		cout << "Введите число k <= размеру массива: ";	//
-		cin >> array[1];								// Вводим число k
+	cout << "Введите число k <= " << arraySize - 5 << ": ";		//
+	cin >> array[1];											// Вводим число k
+	array[1] += 5;												//
+	while (array[1] > arraySize) {								//
+		cout << "Ошибка ввода" << endl;							//
+		cout << "Введите число k <= " << arraySize-5 << ": ";	//
+		cin >> array[1];										// Вводим число k
 	}
 
 	cout << "Введите максимальное число A: ";	//
