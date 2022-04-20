@@ -10,7 +10,7 @@ int main()
 	int maxNumA;			// Число A
 	int reverseArrayNum;	//
 	int offset = 0;			//
-	int k;
+	int k;					//
 
 	cout << "Введите размерность массива: ";	// Задаём размер масива
 	cin >> arraySize;							//
