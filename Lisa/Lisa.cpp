@@ -7,16 +7,16 @@ int main()
 	setlocale(LC_ALL, "russian");
 
 	int arraySize;			// Размер массива
-	int maxNumA;			// Число A
 	int reverseArrayNum;	//
 	int offset = 0;			//
-	int k;					//
+	float maxNumA;			// Число A
+	float k;				//
 
-	cout << "Введите размерность массива: ";	// Задаём размер масива
-	cin >> arraySize;							//
-	reverseArrayNum = arraySize;				//
-	int* arrayInt = new int[arraySize];			// Создаём массивы
-	int* tmp = new int[arraySize];				//
+	cout << "Введите размерность массива: ";		// Задаём размер масива
+	cin >> arraySize;								//
+	reverseArrayNum = arraySize;					//
+	float* arrayInt = new float[arraySize];			// Создаём массивы
+	float* tmp = new float[arraySize];				//
 
 	cout << "Введите " << arraySize << " чесел:" << endl;	//
 	for (int i = 0; i < arraySize; i++)						// Вводим числа
@@ -28,11 +28,11 @@ int main()
 		cout << arrayInt[i] << " ";							//
 	cout << endl;											//
 
-	cout << "Введите число k <= " << arraySize << ": ";		//
+	cout << "Введите число k <= " << arraySize << ": ";			//
 	cin >> k;													// Вводим число k
 	while (k > arraySize) {										//
 		cout << "Ошибка ввода" << endl;							//
-		cout << "Введите число k <= " << arraySize << ": ";	//
+		cout << "Введите число k <= " << arraySize << ": ";		//
 		cin >> k;												// Вводим число k
 	}
 
@@ -44,34 +44,38 @@ int main()
 	cin >> sleepTime;						//
 
 	for (int i = 0; i < arraySize; i++) {	//
-		int num = arrayInt[i];				//
+		float num = arrayInt[i];			//
 		if (num < maxNumA) {				// Ищем элементы меньше A
 			tmp[offset] = num;				// Записываем в лево
 			offset++;						//
+			cout << num << " \a" << flush;	// Выводим новый элемент
 			Sleep(sleepTime);				// Спим указанное время
 		}									//
 	}										//
 
 	for (int i = 0; i < arraySize; i++) {	//
-		int num = arrayInt[i];				//
+		float num = arrayInt[i];			//
 		if (num == maxNumA) {				// Проверяем элементы равные A
 			tmp[offset] = num;				// Записываем
 			offset++;						//
+			cout << num << " \a" << flush;	// Выводим новый элемент
 			Sleep(sleepTime);				// Спим указанное время
 		}									//
 	}										//
 
 	for (int i = 0; i < arraySize; i++) {	//
-		int num = arrayInt[i];				//
+		float num = arrayInt[i];			//
 		if (num > maxNumA) {				// Ищем элементы больше A
 			tmp[offset] = num;				// Записываем в право
 			offset++;						//
+			cout << num << " \a" << flush;	// Выводим новый элемент
 			Sleep(sleepTime);				// Спим указанное время
 		}									//
 	}										//
 	arrayInt = tmp;							// Возвращение значения из временного массива
+	cout << endl;							//
 
-	int res = 1;					//
+	float res = 1;					//
 	for (int i = 0; i < k; i++)		// Произведение
 		res *= arrayInt[i];			//
 
@@ -79,8 +83,8 @@ int main()
 	for (int i = 0; i < arraySize; i++)	// Выводим итоговый массив
 		cout << arrayInt[i] << " ";		//
 	cout << endl;
-	
+
 	cout << "Итоговое произведение: " << res << endl;	// Выводм итоговое произведение
-	
+
 	system("pause");
 }
