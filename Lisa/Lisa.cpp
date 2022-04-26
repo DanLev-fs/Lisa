@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <windows.h>
 using namespace std;
 
@@ -9,8 +9,8 @@ int main()
     int arraySize;          // Размер массива
     int reverseArrayNum;    //
     int offset = 0;         //
+    int k;                  //
     float maxNumA;          // Число A
-    float k;                //
 
     cout << "Введите размерность массива: ";    // Задаём размер масива
     cin >> arraySize;                           //
@@ -45,7 +45,7 @@ int main()
 
 
     for (int i = 0; i < arraySize; i++) {   //
-        float num = arrayInt[i];              //
+        float num = arrayInt[i];            //
         if (num < maxNumA) {                // Ищем элементы меньше A
             tmp[offset] = num;              // Записываем в лево
             offset++;                       //
