@@ -20,7 +20,7 @@ int main()
 {
     setlocale(LC_ALL, "russian");
 
-    threadParametrs* params = (threadParametrs*)malloc(sizeof(threadParametrs));
+    threadParametrs* params = (threadParametrs*)malloc(sizeof(threadParametrs));    //
 
     HANDLE hWork;           // Дескриптор потока work
     HANDLE hMultiElement;   // Дескриптор потока MultiElement
