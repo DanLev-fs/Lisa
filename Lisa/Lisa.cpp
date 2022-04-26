@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <algorithm>
 using namespace std;
 
 int main()
@@ -43,6 +44,7 @@ int main()
     cout << "Время сна в милисекундах: ";   // Вводим время сна между итерациями
     cin >> sleepTime;                       //
 
+    sort(arrayInt, arrayInt + arraySize);
 
     for (int i = 0; i < arraySize; i++) {   //
         float num = arrayInt[i];            //

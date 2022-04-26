@@ -114,10 +114,10 @@ DWORD WINAPI work(LPVOID array) {
     int offset = 0;
     int reverseArrayNum = params->arraySize;
 
+    sort(params->array, params->array + params->arraySize);
+
     for (int i = 0; i < params->arraySize; i++)	// Копируем данные во временный массив 
         tmp[i] = params->array[i];              //
-    
-    sort(params->array, params->array + params->arraySize);
 
     for (int i = 0; i < params->arraySize; i++) {   //
         float num = tmp[i];                         //
