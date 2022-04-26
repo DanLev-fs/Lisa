@@ -26,7 +26,7 @@ int main()
 
     cout << "Введите размерность массива: ";        //
     cin >> params->arraySize;                       // Задаём размер массива и
-    while (params->arraySize <= 0) {                 //
+    while (params->arraySize <= 0) {                //
         cout << "Ошибка ввода" << endl;             //
         cout << "Введите размерность массива: ";    //
         cin >> params->arraySize;                   // Задаём размер массива и
@@ -93,6 +93,7 @@ int main()
     CloseHandle(params->hWorkSemaphore);                    //
     CloseHandle(params->hMultiElementBinSemaphore);         // Удаляем дескрипторы
     CloseHandle(params->hMultiElementBinSemaphorePrint);    //
+    free(params);
 
     system("pause");
 }
@@ -116,7 +117,7 @@ DWORD WINAPI work(LPVOID array) {
         tmp[i] = params->array[i];              //
 
     for (int i = 0; i < params->arraySize; i++) {   //
-        int num = tmp[i];                           //
+        float num = tmp[i];                         //
         if (num < params->maxNumA) {                // Ищем элементы меньше A
             params->array[offset] = num;            // Записываем в лево
             offset++;                               //
@@ -141,7 +142,7 @@ DWORD WINAPI MultiElement(LPVOID array) {
     WaitForSingleObject(params->hMultiElementBinSemaphore, INFINITE);   // Ждём сигнал
 
     float res = 1;                      //
-    for (int i = 6; i < params->k; i++) // Произведение
+    for (int i = 0; i < params->k; i++) // Произведение
         res *= params->array[i];        //
 
     WaitForSingleObject(params->hMultiElementBinSemaphorePrint, INFINITE);  // Ждём сигнал

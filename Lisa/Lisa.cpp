@@ -45,7 +45,7 @@ int main()
 
 
     for (int i = 0; i < arraySize; i++) {   //
-        int num = arrayInt[i];              //
+        float num = arrayInt[i];              //
         if (num < maxNumA) {                // Ищем элементы меньше A
             tmp[offset] = num;              // Записываем в лево
             offset++;                       //
